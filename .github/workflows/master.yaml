@@ -6,10 +6,11 @@ on:
       - master
 
 jobs:
-  publish:
+  pnpm:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        node: [12, 14, 16, lts, current]
         dockerfile: [pnpm]
 
     steps:
@@ -26,5 +27,6 @@ jobs:
         with:
           context: .
           file: ${{ matrix.dockerfile }}.dockerfile
+          build-args: version=${{ matrix.node }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:${{ matrix.node }}
