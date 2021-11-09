@@ -1,8 +1,4 @@
 ARG version=latest
 FROM node:$version
-
-RUN npm install -g pnpm
-
-RUN pnpm config set store-dir /usr/pnpm/.pnpm-store
-
-CMD ["pnpm"]
+RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+CMD ["node"]
