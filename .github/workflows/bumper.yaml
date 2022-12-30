@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [12, 14, 16, lts, latest, current]
+        node: [14, 16, 18, lts, latest, current]
+        pnpm: [6, 7]
         dockerfile: [pnpm]
 
     steps:
@@ -25,6 +26,8 @@ jobs:
         with:
           context: .
           file: ${{ matrix.dockerfile }}.dockerfile
-          build-args: version=${{ matrix.node }}
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=${{ matrix.pnpm }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:${{ matrix.node }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:${{ matrix.node }}-${{ matrix.pnpm }}

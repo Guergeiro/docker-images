@@ -1,4 +1,5 @@
-ARG version=latest
-FROM node:$version
-RUN npm install --global pnpm@6
+ARG node=latest
+ARG pnpm=latest
+FROM node:$node
+RUN npm install --global pnpm@$pnpm
 CMD ["node"]
