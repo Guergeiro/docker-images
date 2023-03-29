@@ -1,0 +1,93 @@
+name: pnpm
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  pnpm-6:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14, 16, 18, lts, latest, current]
+        pnpm: [6]
+        dockerfile: [pnpm]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}.dockerfile
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=${{ matrix.pnpm }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:${{ matrix.node }}-${{ matrix.pnpm }}
+
+  pnpm-7:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16, 18, lts, latest, current]
+        pnpm: [7]
+        dockerfile: [pnpm]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}.dockerfile
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=${{ matrix.pnpm }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:${{ matrix.node }}-${{ matrix.pnpm }}
+
+  pnpm-8:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16, 18, lts, latest, current]
+        pnpm: [8]
+        dockerfile: [pnpm]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}.dockerfile
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=${{ matrix.pnpm }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.dockerfile }}:${{ matrix.node }}-${{ matrix.pnpm }}
