@@ -1,0 +1,42 @@
+name: iac-backup
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  iac-backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          file: ./iac-backup/Dockerfile
+          context: ./iac-backup
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/iac-backup:latest
+
+  repository:
+    runs-on: ubuntu-latest
+    needs: [iac-backup]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/iac-backup
+          readme-filepath: ./iac-backup/README.md
+          short-description: "Homeserver backup"
