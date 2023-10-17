@@ -14,7 +14,7 @@ export async function vaultwarden() {
   await backupKeys(backupDir);
   const zipFile = await create7zip(backupDir);
   await uploadRclone(zipFile, "vaultwarden");
-  // await deleteOldBackups("vaultwarden");
+  await deleteOldBackups("vaultwarden");
 }
 
 async function backupPostgres(tmpDir: string) {

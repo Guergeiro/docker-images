@@ -12,7 +12,7 @@ export async function paperless() {
   await backupMedia(backupDir);
   const zipFile = await create7zip(backupDir);
   await uploadRclone(zipFile, "paperless");
-  // await deleteOldBackups("paperless");
+  await deleteOldBackups("paperless");
 }
 
 async function backupPostgres(tmpDir: string) {
