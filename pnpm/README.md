@@ -10,7 +10,9 @@
 
 # Supported tags and respective `Dockerfile` links
 
-- [`14-6`, `16-6`, `18-6`, `lts-6`](./Dockerfile)
+- [`12-5`, `14-5`](./Dockerfile)
+
+- [`12-6`, `14-6`, `16-6`, `18-6`](./Dockerfile)
 
 - [`14-7`, `16-7`, `18-7`, `20-7`, `lts-7`, `latest-7`, `current-7`](./Dockerfile)
 
