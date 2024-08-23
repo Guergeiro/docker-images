@@ -10,17 +10,41 @@
 
 # Supported tags and respective `Dockerfile` links
 
-- [`12-5`, `14-5`](./Dockerfile)
+- [`16-6`, `16-7`, `16-8`](./Dockerfile)
 
-- [`12-6`, `14-6`, `16-6`, `18-6`](./Dockerfile)
+- [`18-6`, `18-7`, `18-8`, `18-9`](./Dockerfile)
 
-- [`14-7`, `16-7`, `18-7`, `20-7`](./Dockerfile)
+- [`20-7`, `20-8`, `20-9`](./Dockerfile)
 
-- [`16-8`, `18-8`, `20-8`, `22-8`](./Dockerfile)
+- [`22-8`, `22-9`, `lts-latest`](./Dockerfile)
 
-- [`18-9`, `20-9`, `22-9`](./Dockerfile)
+- [`22-8`, `22-9`](./Dockerfile)
 
-- [`lts-9`, `latest-9`, `current-9`](./Dockerfile)
+- [`latest-latest`, `current-latest`](./Dockerfile)
+
+- [`16-6-alpine`, `16-7-alpine`, `16-8-alpine`](./Dockerfile_alpine)
+
+- [`18-6-alpine`, `18-7-alpine`, `18-8-alpine`, `18-9-alpine`](./Dockerfile_alpine)
+
+- [`20-7-alpine`, `20-8-alpine`, `20-9-alpine`](./Dockerfile_alpine)
+
+- [`22-8-alpine`, `22-9-alpine`, `lts-latest-alpine`](./Dockerfile_alpine)
+
+- [`22-8-alpine`, `22-9-alpine`](./Dockerfile_alpine)
+
+- [`current-latest-alpine`](./Dockerfile_alpine)
+
+- [`16-6-slim`, `16-7-slim`, `16-8-slim`](./Dockerfile_slim)
+
+- [`18-6-slim`, `18-7-slim`, `18-8-slim`, `18-9-slim`](./Dockerfile_slim)
+
+- [`20-7-slim`, `20-8-slim`, `20-9-slim`](./Dockerfile_slim)
+
+- [`22-8-slim`, `22-9-slim`, `lts-latest-slim`](./Dockerfile_slim)
+
+- [`22-8-slim`, `22-9-slim`](./Dockerfile_slim)
+
+- [`current-latest-slim`](./Dockerfile_slim)
 
 # Quick reference (cont.)
 
@@ -54,6 +78,19 @@ $ docker run -it --rm --name my-running-app my-nodejs-app
 # Image Variants
 
 ## `guergeiro/pnpm:<node-version>-<pnpm-version>`
+
+This is the defacto image.
+
+## `guergeiro/pnpm:<node-version>-<pnpm-version>-alpine`
+
+This image is based on the popular
+[Alpine Linux project](https://alpinelinux.org/), available in
+[the alpine official image](https://hub.docker.com/_/alpine).
+
+## `guergeiro/pnpm:<node-version>-<pnpm-version>-slim`
+
+This image does not contain the common packages contained in the default tag and
+only contains the minimal packages needed to run `node`.
 
 Support is given based on
 [Node's release schedule](https://github.com/nodejs/release#release-schedule)

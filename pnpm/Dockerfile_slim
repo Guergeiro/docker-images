@@ -1,0 +1,5 @@
+ARG node=current
+FROM node:$node-slim
+ARG pnpm=latest
+RUN npm install --global "pnpm@$pnpm"
+CMD ["node"]
