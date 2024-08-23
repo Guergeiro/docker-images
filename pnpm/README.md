@@ -14,9 +14,13 @@
 
 - [`12-6`, `14-6`, `16-6`, `18-6`](./Dockerfile)
 
-- [`14-7`, `16-7`, `18-7`, `20-7`, `lts-7`, `latest-7`, `current-7`](./Dockerfile)
+- [`14-7`, `16-7`, `18-7`, `20-7`](./Dockerfile)
 
-- [`16-8`, `18-8`, `20-7`, `lts-8`, `latest-8`, `current-8`](./Dockerfile)
+- [`16-8`, `18-8`, `20-8`, `22-8`](./Dockerfile)
+
+- [`18-9`, `20-9`, `22-9`](./Dockerfile)
+
+- [`lts-9`, `latest-9`, `current-9`](./Dockerfile)
 
 # Quick reference (cont.)
 
@@ -54,4 +58,9 @@ $ docker run -it --rm --name my-running-app my-nodejs-app
 Support is given based on
 [Node's release schedule](https://github.com/nodejs/release#release-schedule)
 and the compatibility list of
-[PNPM](https://pnpm.io/installation#compatibility).
+[pnpm](https://pnpm.io/installation#compatibility).
+
+**IMPORTANT:**
+
+Special versions of node - `lts`, `latest`, `current` - will only target the
+last version of pnpm.
