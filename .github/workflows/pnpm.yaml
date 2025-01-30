@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16, 18]
+        node: [18]
         pnpm: [6]
         variant: ["", "alpine", "slim"]
 
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16, 18, 20]
+        node: [18, 20]
         pnpm: [7]
         variant: ["", "alpine", "slim"]
 
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16, 18, 20, 22]
+        node: [18, 20, 22]
         pnpm: [8]
         variant: ["", "alpine", "slim"]
 
@@ -131,6 +131,45 @@ jobs:
       matrix:
         node: [18, 20, 22]
         pnpm: [9]
+        variant: ["", "alpine", "slim"]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        if: ${{ matrix.variant == '' }}
+        uses: docker/build-push-action@v4
+        with:
+          file: ./pnpm/Dockerfile
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=${{ matrix.pnpm }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pnpm:${{ matrix.node }}-${{ matrix.pnpm }}
+
+      - name: Build and push
+        if: ${{ matrix.variant != '' }}
+        uses: docker/build-push-action@v4
+        with:
+          file: ./pnpm/Dockerfile_${{ matrix.variant }}
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=${{ matrix.pnpm }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pnpm:${{ matrix.node }}-${{ matrix.pnpm }}-${{ matrix.variant }}
+
+  pnpm-10:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+        pnpm: [10]
         variant: ["", "alpine", "slim"]
 
     steps:

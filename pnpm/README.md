@@ -10,40 +10,27 @@
 
 # Supported tags and respective `Dockerfile` links
 
-- [`16-6`, `16-7`, `16-8`](./Dockerfile)
+- [`18-6`, `18-7`, `18-8`, `18-9`, `18-10`](./Dockerfile)
 
-- [`18-6`, `18-7`, `18-8`, `18-9`](./Dockerfile)
+- [`20-7`, `20-8`, `20-9`, `20-10`](./Dockerfile)
 
-- [`20-7`, `20-8`, `20-9`](./Dockerfile)
-
-- [`22-8`, `22-9`, `lts-latest`](./Dockerfile)
-
-- [`22-8`, `22-9`](./Dockerfile)
+- [`22-8`, `22-9`, `22-10`, `lts-latest`](./Dockerfile)
 
 - [`latest-latest`, `current-latest`](./Dockerfile)
 
-- [`16-6-alpine`, `16-7-alpine`, `16-8-alpine`](./Dockerfile_alpine)
+- [`18-6-alpine`, `18-7-alpine`, `18-8-alpine`, `18-9-alpine`, `18-10-alpine`](./Dockerfile_alpine)
 
-- [`18-6-alpine`, `18-7-alpine`, `18-8-alpine`, `18-9-alpine`](./Dockerfile_alpine)
+- [`20-7-alpine`, `20-8-alpine`, `20-9-alpine`, `20-10-alpine`](./Dockerfile_alpine)
 
-- [`20-7-alpine`, `20-8-alpine`, `20-9-alpine`](./Dockerfile_alpine)
-
-- [`22-8-alpine`, `22-9-alpine`, `lts-latest-alpine`](./Dockerfile_alpine)
-
-- [`22-8-alpine`, `22-9-alpine`](./Dockerfile_alpine)
+- [`22-8-alpine`, `22-9-alpine`, `22-10-alpine`, `lts-latest-alpine`](./Dockerfile_alpine)
 
 - [`current-latest-alpine`](./Dockerfile_alpine)
 
-- [`16-6-slim`, `16-7-slim`, `16-8-slim`](./Dockerfile_slim)
+- [`18-6-slim`, `18-7-slim`, `18-8-slim`, `18-9-slim`, `18-10-slim`](./Dockerfile_slim)
 
-- [`18-6-slim`, `18-7-slim`, `18-8-slim`, `18-9-slim`](./Dockerfile_slim)
+- [`20-7-slim`, `20-8-slim`, `20-9-slim`, `20-10-slim`](./Dockerfile_slim)
 
-- [`20-7-slim`, `20-8-slim`, `20-9-slim`](./Dockerfile_slim)
-
-- [`22-8-slim`, `22-9-slim`, `lts-latest-slim`](./Dockerfile_slim)
-
-- [`22-8-slim`, `22-9-slim`](./Dockerfile_slim)
-
+- [`22-8-slim`, `22-9-slim`, `22-10-slim`, `lts-latest-slim`](./Dockerfile_slim)
 - [`current-latest-slim`](./Dockerfile_slim)
 
 # Quick reference (cont.)
@@ -62,7 +49,7 @@
 
 ```dockerfile
 # specify the base image with your desired version
-FROM guergeiro/pnpm:18-8
+FROM guergeiro/pnpm:22-10
 COPY . .
 RUN pnpm install
 CMD ["pnpm", "start"]
