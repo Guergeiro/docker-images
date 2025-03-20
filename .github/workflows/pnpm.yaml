@@ -17,17 +17,17 @@ jobs:
         variant: ["", "alpine", "slim"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ matrix.variant == '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           build-args: |
@@ -38,7 +38,7 @@ jobs:
 
       - name: Build and push
         if: ${{ matrix.variant != '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile_${{ matrix.variant }}
           build-args: |
@@ -56,17 +56,17 @@ jobs:
         variant: ["", "alpine", "slim"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ matrix.variant == '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           build-args: |
@@ -77,7 +77,7 @@ jobs:
 
       - name: Build and push
         if: ${{ matrix.variant != '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile_${{ matrix.variant }}
           build-args: |
@@ -95,17 +95,17 @@ jobs:
         variant: ["", "alpine", "slim"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ matrix.variant == '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           build-args: |
@@ -116,7 +116,7 @@ jobs:
 
       - name: Build and push
         if: ${{ matrix.variant != '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile_${{ matrix.variant }}
           build-args: |
@@ -134,17 +134,17 @@ jobs:
         variant: ["", "alpine", "slim"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ matrix.variant == '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           build-args: |
@@ -155,7 +155,7 @@ jobs:
 
       - name: Build and push
         if: ${{ matrix.variant != '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile_${{ matrix.variant }}
           build-args: |
@@ -173,17 +173,17 @@ jobs:
         variant: ["", "alpine", "slim"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ matrix.variant == '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           build-args: |
@@ -194,7 +194,7 @@ jobs:
 
       - name: Build and push
         if: ${{ matrix.variant != '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile_${{ matrix.variant }}
           build-args: |
@@ -211,17 +211,17 @@ jobs:
         variant: ["", "alpine", "slim"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ matrix.variant == '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           build-args: |
@@ -231,7 +231,7 @@ jobs:
 
       - name: Build and push
         if: ${{ matrix.variant != '' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile_${{ matrix.variant }}
           build-args: |
@@ -243,16 +243,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: ./pnpm/Dockerfile
           push: true
@@ -263,7 +263,7 @@ jobs:
     needs: [pnpm-6,pnpm-7,pnpm-8,pnpm-9,special,latest]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
