@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20, 22]
+        node: [18, 20, 22, 24]
         pnpm: [8]
         variant: ["", "alpine", "slim"]
 
@@ -129,7 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20, 22]
+        node: [18, 20, 22, 24]
         pnpm: [9]
         variant: ["", "alpine", "slim"]
 
@@ -168,7 +168,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20, 22]
+        node: [18, 20, 22, 24]
         pnpm: [10]
         variant: ["", "alpine", "slim"]
 
@@ -260,7 +260,7 @@ jobs:
 
   repository:
     runs-on: ubuntu-latest
-    needs: [pnpm-6,pnpm-7,pnpm-8,pnpm-9,special,latest]
+    needs: [pnpm-6,pnpm-7,pnpm-8,pnpm-9,pnpm-10,special,latest]
 
     steps:
       - uses: actions/checkout@v4
