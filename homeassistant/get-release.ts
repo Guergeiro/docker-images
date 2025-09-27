@@ -10,4 +10,4 @@ const { data: release } = await octokit.rest.repos.getLatestRelease({
   repo: "core",
 });
 
-console.log(release.tag_name)
+console.log(JSON.stringify({ tag: [release.tag_name] }));
