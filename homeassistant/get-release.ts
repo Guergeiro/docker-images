@@ -54,4 +54,4 @@ const iterator = AsyncSeq.from(octokit.paginate.iterator(
 
 const tags = await iterator.take(count);
 
-console.log(JSON.stringify({ tag: ["latest", ...tags] }));
+console.log(JSON.stringify({ tag: tags }));

@@ -57,7 +57,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/homeassistant-hacs:${{ matrix.tag }}
           build-args: |
-            homeassistant=${{ matrix.tag }}
+            tag=${{ matrix.tag }}
 
   repository:
     runs-on: ubuntu-latest

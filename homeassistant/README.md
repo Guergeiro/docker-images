@@ -20,4 +20,4 @@
 
 - **Supported architectures:**
 
-  Based on [Linuxserver base image](https://hub.docker.com/r/linuxserver/homeassistant).
+  Based on [Homeassistant base image](https://github.com/home-assistant/core/pkgs/container/home-assistant).
