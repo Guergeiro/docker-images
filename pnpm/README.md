@@ -19,6 +19,7 @@ Link: https://pnpm.io/docker
 
 # Supported node tags
 
+- 20
 - 22
 - 24
 - 26
