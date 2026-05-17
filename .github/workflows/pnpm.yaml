@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [20, 22, 24]
+        node: [20, 22, 24, 26]
         pnpm: [8]
         variant: ["", "alpine", "slim"]
 
@@ -108,7 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [20, 22, 24]
+        node: [20, 22, 24, 26]
         pnpm: [9]
         variant: ["", "alpine", "slim"]
 
@@ -155,7 +155,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [20, 22, 24]
+        node: [20, 22, 24, 26]
         pnpm: [10]
         variant: ["", "alpine", "slim"]
 
