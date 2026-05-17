@@ -1,3 +1,12 @@
+# WARNING
+
+Since pnpm version 11, the pnpm team now provides official Docker images. This
+repository is only maintained for legacy purposes and will not receive updates.
+Please refer to the official pnpm Docker images for the latest versions and
+support.
+
+Link: https://pnpm.io/docker
+
 # Quick reference
 
 - **Maintained by:**
@@ -8,30 +17,18 @@
 
   [GitHub Discussions](https://github.com/Guergeiro/docker-images/discussions)
 
-# Supported tags and respective `Dockerfile` links
+# Supported node tags
 
-- [`18-6`, `18-7`, `18-8`, `18-9`, `18-10`](./Dockerfile)
+- 22
+- 24
+- 26
 
-- [`20-7`, `20-8`, `20-9`, `20-10`](./Dockerfile)
+# Supported pnpm tags
 
-- [`22-8`, `22-9`, `22-10`, `lts-latest`](./Dockerfile)
-
-- [`latest-latest`, `current-latest`](./Dockerfile)
-
-- [`18-6-alpine`, `18-7-alpine`, `18-8-alpine`, `18-9-alpine`, `18-10-alpine`](./Dockerfile_alpine)
-
-- [`20-7-alpine`, `20-8-alpine`, `20-9-alpine`, `20-10-alpine`](./Dockerfile_alpine)
-
-- [`22-8-alpine`, `22-9-alpine`, `22-10-alpine`, `lts-latest-alpine`](./Dockerfile_alpine)
-
-- [`current-latest-alpine`](./Dockerfile_alpine)
-
-- [`18-6-slim`, `18-7-slim`, `18-8-slim`, `18-9-slim`, `18-10-slim`](./Dockerfile_slim)
-
-- [`20-7-slim`, `20-8-slim`, `20-9-slim`, `20-10-slim`](./Dockerfile_slim)
-
-- [`22-8-slim`, `22-9-slim`, `22-10-slim`, `lts-latest-slim`](./Dockerfile_slim)
-- [`current-latest-slim`](./Dockerfile_slim)
+- 7
+- 8
+- 9
+- 10
 
 # Quick reference (cont.)
 
