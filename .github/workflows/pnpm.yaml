@@ -198,6 +198,52 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pnpm:${{ matrix.node }}-${{ matrix.pnpm }}-${{ matrix.variant }}
 
+  top-level:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22, 24, 26]
+        variant: ["", "alpine", "slim"]
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build and push
+        if: ${{ matrix.variant == '' }}
+        uses: docker/build-push-action@v7
+        with:
+          file: ./pnpm/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=10
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pnpm:${{ matrix.node }}
+
+      - name: Build and push
+        if: ${{ matrix.variant != '' }}
+        uses: docker/build-push-action@v7
+        with:
+          file: ./pnpm/Dockerfile_${{ matrix.variant }}
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            node=${{ matrix.node }}
+            pnpm=10
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pnpm:${{ matrix.node }}-${{ matrix.variant }}
+
   special:
     runs-on: ubuntu-latest
     strategy:
@@ -270,7 +316,7 @@ jobs:
 
   repository:
     runs-on: ubuntu-latest
-    needs: [pnpm-7,pnpm-8,pnpm-9,pnpm-10,special,latest]
+    needs: [pnpm-7,pnpm-8,pnpm-9,pnpm-10,top-level,special,latest]
 
     steps:
       - uses: actions/checkout@v6
